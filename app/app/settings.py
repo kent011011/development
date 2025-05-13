@@ -27,18 +27,18 @@ SECRET_KEY = 'django-insecure-r&4&06*qp0*c$t)4#6_tn&4h28%7^1#g9pj)(gbp97^a6m!s6i
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CORS_ALLOW_ALL_ORIGINS = True
-"http://127.0.0.1:8013",
-"http://localhost:8013",
-"http://localhost:3000",
-"http://127.0.0.1:5500",
-"http://127.0.0.1:3338",
-"http://172.17.100.14:3338",
-"http://172.17.100.14:8013",
-"http://0.0.0.0:8013",
-CORS_ALLOW_METHODS = ['DELETE', 'GET', 'PATCH', 'POST', 'PUT']
-# Application definition
 
+# CORS Configuration
+CORS_ALLOW_ALL_ORIGINS = True
+# If you want to allow specific origins, use CORS_ALLOWED_ORIGINS
+# CORS_ALLOWED_ORIGINS = [
+#     "http://172.17.100.14:3362",
+#     "http://172.17.100.14:8005",
+#     "http://0.0.0.0:8005",
+# ]
+CORS_ALLOW_METHODS = ['DELETE', 'GET', 'PATCH', 'POST', 'PUT']
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -61,7 +61,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
 ]
 
 ROOT_URLCONF = 'app.urls'
@@ -87,20 +86,11 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-#DATABASES = {
-    #'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': BASE_DIR / 'db.sqlite3',
-   # }
-#}
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # Use MySQL engine
-        'NAME': 'sagusay5_db1',                 # Your database name
-        'USER': 'sagusay5',                     # Your MySQL username
+        'NAME': 'edulzura1_db1',               # Your database name
+        'USER': 'edulzura1',                   # Your MySQL username
         'PASSWORD': '123456',                  # Your MySQL password
         'HOST': 'localhost',                   # MySQL server host (localhost if on the same machine)
         'PORT': '3306',                        # MySQL default port
@@ -110,7 +100,6 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -126,10 +115,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -141,28 +128,26 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = 'static/'
 
-
 # Media settings
-
-MEDIA_URL = '/sagusay5/media/'
+MEDIA_URL = '/edulzura1/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+# REST framework settings
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 16
 }
-# settings.py
+
+# File upload size limits
 DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
 FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
